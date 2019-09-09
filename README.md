@@ -1,6 +1,6 @@
 # L's React Component Template
 
-[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://louisgv.ga/lrc)
+[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://louisgv.ga/lrct)
 
 What's included:
 
@@ -13,3 +13,20 @@ What's included:
 ## Available Scripts
 
 See `package.json`
+
+## Deploy Instructions
+
+```
+yarn dist
+cd dist
+npm publish
+```
+
+## Example
+
+```tsx
+import { Footer } from 'lrct/components/Footer'
+
+render(<Footer>Hello</Footer>)
+```
+
