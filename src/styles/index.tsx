@@ -3,6 +3,7 @@ import { DefaultTheme } from 'styled-components'
 import { flexCenterColumn } from './Mixin';
 
 export const theme: DefaultTheme = {
+  name: 'default',
   color: {
     text: '#FFFFFF',
     primaryText: '#212121',

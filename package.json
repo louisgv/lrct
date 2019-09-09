@@ -1,38 +1,43 @@
 {
-  "name": "lra",
-  "version": "0.2.3",
-  "homepage": "https://louisgv.ga/lra",
-  "repository": "louisgv/lra",
-  "private": true,
+  "name": "lrc",
+  "version": "1.0.0",
+  "homepage": "https://louisgv.ga/lrc",
+  "repository": "louisgv/lrc",
+  "main": "dist/index.js",
   "dependencies": {
-    "@craco/craco": "^5.4.0",
-    "@hot-loader/react-dom": "^16.9.0",
+    "@babel/core": "^7.6.0",
     "@types/jest": "24.0.18",
     "@types/node": "12.7.4",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
-    "@types/styled-components": "^4.1.18",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-hot-loader": "^4.12.12",
-    "react-scripts": "3.1.1",
+    "@types/styled-components": "^4.1.19",
     "styled-components": "^4.3.2",
-    "typescript": "3.6.2"
+    "styled-system": "^5.1.1"
   },
   "scripts": {
-    "predeploy": "craco build",
+    "predeploy": "yarn build",
     "deploy": "npx gh-pages -d build",
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "craco eject",
+    "start": "start-storybook -c .storybook",
+    "build": "build-storybook -o build",
     "version": "npx auto-changelog -p && git add CHANGELOG.md"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
   "devDependencies": {
-    "craco-plugin-react-hot-reload": "^0.1.0"
+    "@storybook/addon-actions": "^5.1.11",
+    "@storybook/addon-links": "^5.1.11",
+    "@storybook/react": "^5.1.11",
+    "@types/storybook__react": "^4.0.2",
+    "babel-loader": "^8.0.6",
+    "react-docgen-typescript-loader": "^3.2.0",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
+    "storybook-styled-components": "^1.1.4",
+    "typescript": "3.6.2"
   },
   "browserslist": {
     "production": [
