@@ -1,11 +1,8 @@
 {
-  "name": "lrc",
-  "version": "0.1.1",
-  "homepage": "https://louisgv.ga/lrc",
-  "repository": "louisgv/lrc",
-  "files": [
-    "dist"
-  ],
+  "name": "lrct",
+  "version": "0.1.2",
+  "homepage": "https://louisgv.ga/lrct",
+  "repository": "louisgv/lrct",
   "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.6.0",
@@ -18,14 +15,15 @@
     "styled-system": "^5.1.1"
   },
   "scripts": {
-    "prepublish": "babel src -d dist  --ignore __tests__",
+    "prepublish": "yarn dist",
     "predeploy": "yarn build",
     "deploy": "npx gh-pages -d build",
     "start": "start-storybook -c .storybook -s public",
     "build": "build-storybook -o build -s public",
     "version": "npx auto-changelog -p && git add CHANGELOG.md",
-    "dist": "yarn clean:dist && yarn dist:prod",
-    "dist:prod": "tsc -p tsconfig.prod.json --outDir ./dist",
+    "dist": "yarn clean:dist && yarn dist:prod && yarn dist:copy",
+    "dist:prod": "tsc -p tsconfig.prod.json",
+    "dist:copy": "npx cpy-cli README.md CHANGELOG.md LICENSE package.json dist/",
     "clean:build": "npx rimraf ./build",
     "clean:dist": "npx rimraf ./dist"
   },
