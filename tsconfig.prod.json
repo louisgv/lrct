@@ -14,7 +14,7 @@
     "listEmittedFiles": true,
     "jsx": "react",
     "types": [],
-    "typeRoots": ["src/types/**"],
+    "typeRoots": ["src/typings/**"],
     "sourceMap": true,
     "noImplicitAny": true
   },

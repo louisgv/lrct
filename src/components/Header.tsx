@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 import { flexCenterColumn } from '../styles/Mixin'
 
 export const Header = styled.header`
