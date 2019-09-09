@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { flexCenterRow } from '../styles/Mixin'
 
 export const Footer = styled.footer`

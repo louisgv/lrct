@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, DefaultTheme } from 'styled-components'
+import styled, { createGlobalStyle, DefaultTheme } from 'styled-components/macro'
 import { flexCenterColumn } from './Mixin';
 
 export const theme: DefaultTheme = {
