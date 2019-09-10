@@ -14,8 +14,8 @@
     "version": "npx auto-changelog -p && git add CHANGELOG.md",
     "dist": "yarn clean:dist && yarn dist:prod && yarn dist:type && yarn dist:copy",
     "dist:prod": "npx cross-env NODE_ENV=production babel src -d dist -s --extensions .tsx --ignore 'src/**/*.stories.tsx'",
-    "dist:type": "tsc -p tsconfig.prod.json && cpy-cli src/typings dist/typings",
-    "dist:copy": "cpy-cli README.md CHANGELOG.md LICENSE package.json dist/",
+    "dist:type": "tsc -p tsconfig.prod.json && cpy src/typings dist/typings",
+    "dist:copy": "cpy README.md CHANGELOG.md LICENSE package.json dist/",
     "clean:build": "npx rimraf ./build",
     "clean:dist": "npx rimraf ./dist"
   },
