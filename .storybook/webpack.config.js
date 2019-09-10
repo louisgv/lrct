@@ -1,14 +1,22 @@
 module.exports = ({ config }) => {
-  config.module.rules.push({
+  config.module.rules.unshift({
     test: /\.stories\.(ts|tsx)?$/,
     loaders: [
       {
         loader: require.resolve('@storybook/addon-storysource/loader'),
-        options: { parser: 'typescript' },
-      },
+        options: {
+          parser: 'typescript',
+          prettierConfig: {
+            tabWidth: 4,
+            printWidth: 80,
+            singleQuote: true,
+            trailingComma: 'es5'
+          }
+        }
+      }
     ],
-    enforce: 'pre',
-  });
+    enforce: 'pre'
+  })
 
   config.module.rules.push({
     test: /\.(ts|tsx)$/,

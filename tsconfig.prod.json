@@ -6,7 +6,7 @@
     "module": "commonjs",
     "lib": ["dom", "es6", "es5", "es2017"],
     "declaration": true,
-    "outDir": "./dist",
+    "outDir": "dist",
     "strict": false,
     "esModuleInterop": true,
     "experimentalDecorators": true,
@@ -26,5 +26,5 @@
     "!node_modules/@jest",
     "*/**/*.stories.tsx"
   ],
-  "include": ["./src"]
+  "include": ["src"]
 }
