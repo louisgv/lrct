@@ -4,22 +4,26 @@
   "homepage": "https://louisgv.ga/lrct",
   "repository": "louisgv/lrct",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "predeploy": "yarn build",
+    "prepublishOnly": "yarn version",
+    "predeploy": "yarn build:clean && yarn build",
+    "postinstall": "yarn dist",
+    "copy:type": "cpy src/typings dist/typings",
+    "version": "npx auto-changelog -p && git add CHANGELOG.md",
     "deploy": "npx gh-pages -d build",
     "start": "start-storybook -c .storybook -s public -p 9009",
     "build": "build-storybook -o build -s public",
     "build:clean": "npx rimraf ./build",
-    "watch": "yarn dist:ctc && run-p watch:*",
+    "watch": "yarn dist:clean && run-p watch:*",
     "watch:dev": "npx cross-env NODE_ENV=development babel src -w -d dist -s --extensions .tsx --ignore 'src/**/*.stories.tsx'",
-    "watch:type": "cpy src/typings dist/typings && tsc -w -p tsconfig.prod.json",
-    "version": "npx auto-changelog -p && git add CHANGELOG.md",
-    "dist": "yarn dist:ctc && yarn dist:prod",
-    "dist:prod": "npx cross-env NODE_ENV=production babel src -d dist -s --extensions .tsx --ignore 'src/**/*.stories.tsx'",
-    "dist:type": "cpy src/typings dist/typings && tsc -p tsconfig.prod.json",
-    "dist:copy": "cpy README.md CHANGELOG.md LICENSE package.json dist/",
+    "watch:type": "yarn copy:type && tsc -w -p tsconfig.prod.json",
+    "dist": "run-s dist:*",
     "dist:clean": "npx rimraf ./dist",
-    "dist:ctc": "yarn dist:clean && yarn dist:type && yarn dist:copy"
+    "dist:type": "yarn copy:type && tsc -p tsconfig.prod.json",
+    "dist:prod": "npx cross-env NODE_ENV=production babel src -d dist -s --extensions .tsx --ignore 'src/**/*.stories.tsx'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -28,20 +32,20 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "styled-components": "^4.3.2",
-    "styled-system": "^5.1.1"
+    "styled-system": "^5.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
-    "@storybook/addon-a11y": "^5.1.11",
-    "@storybook/addon-actions": "^5.1.11",
-    "@storybook/addon-knobs": "^5.1.11",
-    "@storybook/addon-links": "^5.1.11",
-    "@storybook/addon-storysource": "^5.1.11",
-    "@storybook/addons": "^5.1.11",
-    "@storybook/react": "^5.1.11",
+    "@storybook/addon-a11y": "^5.2.1",
+    "@storybook/addon-actions": "^5.2.1",
+    "@storybook/addon-knobs": "^5.2.1",
+    "@storybook/addon-links": "^5.2.1",
+    "@storybook/addon-storysource": "^5.2.1",
+    "@storybook/addons": "^5.2.1",
+    "@storybook/react": "^5.2.1",
     "@types/jest": "24.0.18",
-    "@types/node": "12.7.4",
+    "@types/node": "12.7.5",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
     "@types/storybook__react": "^4.0.2",
@@ -50,14 +54,14 @@
     "cpy-cli": "^2.0.0",
     "npm-run-all": "^4.1.5",
     "react": "^16.9.0",
-    "react-docgen-typescript-loader": "^3.2.0",
+    "react-docgen-typescript-loader": "^3.2.1",
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-dom": "^16.9.0",
     "react-scripts": "^3.1.1",
     "storybook-styled-components": "^1.1.4",
     "styled-components": "^4.3.2",
-    "styled-system": "^5.1.1",
-    "typescript": "3.6.2"
+    "styled-system": "^5.1.2",
+    "typescript": "3.6.3"
   },
   "browserslist": {
     "production": [
@@ -75,5 +79,8 @@
     "styledComponents": {
       "pure": true
     }
+  },
+  "dependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }

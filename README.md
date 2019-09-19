@@ -10,21 +10,34 @@ What's included:
 
 ## Available Scripts
 
-See `package.json`
+### `start`
 
-## Deploy Instructions
+Start the storybook server, used for standalone development.
 
-```
-yarn dist
-cd dist
-npm publish
-```
+### `watch`
 
-## Example
+Watch `src` and compile with `babel` and `tsc` to `dist`, used for integration development.
+
+### `dist`
+
+Compile using `babel` and `tsc` into `dist`, ready to be deployed.
+
+### `deploy`
+
+Build storybook static page and deploy it via `gh-pages`.
+
+### `publish`
+
+Bump version and publish `dist` to remote registry.
+
+## Integration Example
 
 ```tsx
-import { Footer } from 'lrct/components/Footer'
+import { Footer } from 'lrct/dist/components/Footer'
 
 render(<Footer>Hello</Footer>)
 ```
 
+## Usage with monorepo (lerna)
+
+It should work out of the box
