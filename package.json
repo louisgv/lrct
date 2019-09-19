@@ -1,6 +1,6 @@
 {
   "name": "lrct",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "homepage": "https://louisgv.ga/lrct",
   "repository": "louisgv/lrct",
   "license": "MIT",
@@ -10,8 +10,7 @@
   "scripts": {
     "prepublishOnly": "yarn version",
     "predeploy": "yarn build:clean && yarn build",
-    "postinstall": "yarn dist",
-    "copy:type": "cpy src/typings dist/typings",
+    "copy:type": "npx cpy-cli src/typings dist/typings",
     "version": "npx auto-changelog -p && git add CHANGELOG.md",
     "deploy": "npx gh-pages -d build",
     "start": "start-storybook -c .storybook -s public -p 9009",
@@ -19,7 +18,7 @@
     "build:clean": "npx rimraf ./build",
     "watch": "yarn dist:clean && run-p watch:*",
     "watch:dev": "npx cross-env NODE_ENV=development babel src -w -d dist -s --extensions .tsx --ignore 'src/**/*.stories.tsx'",
-    "watch:type": "yarn copy:type && tsc -w -p tsconfig.prod.json",
+    "watch:type": "yarn copy:type && npx tsc -w -p tsconfig.prod.json",
     "dist": "run-s dist:*",
     "dist:clean": "npx rimraf ./dist",
     "dist:type": "yarn copy:type && tsc -p tsconfig.prod.json",
